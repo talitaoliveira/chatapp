@@ -1,3 +1,13 @@
+This project was made by Studies purpose.
+
+This project was made folowing this tutorial: 
+
+[How to build a modern chat application with React.js](https://medium.com/free-code-camp/building-a-modern-chat-application-with-react-js-558896622194)
+
+----
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
