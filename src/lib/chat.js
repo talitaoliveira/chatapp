@@ -1,18 +1,18 @@
 import { CometChat } from "@cometchat-pro/chat";
 import config from "../config";
 
-const CCManager = () => {
+//const CCManager = () => {
 
-  const LISTENER_KEY_MESSAGE = "msglistener";
-  const appId = config.appId;
-  const apiKey = config.appId;
-  const LISTENER_KEY_GROUP = "grouplistener";
+  export const LISTENER_KEY_MESSAGE = "msglistener";
+  export const appId = config.appId;
+  export const apiKey = config.appKey;
+  export const LISTENER_KEY_GROUP = "grouplistener";
 
-  const init = () => {
+  export const init = () => {
     return CometChat.init(appId);
   }
 
-  const getMessage = (uid, text, msgType) => {
+  export const getMessage = (uid, text, msgType) => {
     if (msgType === 'user') {
       return new CometChat.TexMessage(uid, text, CometChat.MESSAGE_TYPE.TEXT, CometChat.RECEIVER_TYPE.USER);
     }
@@ -20,15 +20,15 @@ const CCManager = () => {
     return new CometChat.TextMessage(uid, text, CometChat.MESSAGE_TYPE.TEXT, CometChat.RECEIVER_TYPE.GROUPß);
   }
 
-  const getLoggedInUser = () => {
+  export const getLoggedInUser = () => {
     return CometChat.getLoggedInUser();
   }
 
-  const login = () => {
-    return CometChat.login(UID, this.apiKey);
+  export const login = (UID) => {
+    return CometChat.login(UID, apiKey);
   }
 
-  const getGroupMessages = () => {
+  export const getGroupMessages = (GUID, callback, limit = 30) => {
     const messagesRequest = new CometChat.MessagesRequestBuilder()
       .setGUID(GUID)
       .setLimit(limit)
@@ -37,18 +37,18 @@ const CCManager = () => {
     return messagesRequest.fetchPrevious();
   }
 
-  const sendGroupMessage = (UID, message) => {
+  export const sendGroupMessage = (UID, message) => {
     const textMessage = this.getTextMessage(UID, message, "group");
     return CometChat.sendMessage(textMessage);
   }
 
-  const joinGroup = () => {
+  export const joinGroup = (GUID) => {
     return CometChat.joinGroup(GUID, CometChat.GROUP_TYPE.PUBLIC, "");
   }
 
-  const addMessageListener = () =>{
+  export const addMessageListener = (callback) =>{
     CometChat.addMessageListener(
-      this.LISTENER_KEY_MESSAGE,
+      LISTENER_KEY_MESSAGE,
       new CometChat.MessageListener({
         onTextMessageReceived: textMessage => {
           callback(textMessage);
@@ -57,4 +57,6 @@ const CCManager = () => {
     );
   }
 
-}
+//}
+
+//export default CCManager;
