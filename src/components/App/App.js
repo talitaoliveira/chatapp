@@ -4,8 +4,12 @@ import './App.css';
 // The below components will be created shortly
 import Login from "../Login/Login";
 import Groupchat from "../Groupchat/Groupchat";
+import * as chat from "../../lib/chat";
 
 const App = (props) => {
+  
+  chat.init();
+
   return (
     <Switch>
       <Redirect exact from="/" to="/login" />
